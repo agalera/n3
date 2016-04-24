@@ -2,6 +2,7 @@ from bottle import get, post, request, redirect
 from modules.render import draw
 from modules.oauth2 import auth
 from models.admin import M_admin
+import settings
 
 
 class Admin:
@@ -15,7 +16,7 @@ class Admin:
     @post('/new_post')
     @auth(1)
     def new_post(*args, **kwargs):
-        new_id = M_admin.new_post(kwargs['n3_token']['id'],
+        new_id = M_admin.new_post(kwargs[settings.COOKIE_NAME]['id'],
                                   request.forms.get('title').decode('utf-8'),
                                   request.forms.get('texto').decode('utf-8'),
                                   request.forms.get('tags').split(','),
