@@ -26,7 +26,7 @@ class M_news(object):
 
     @classmethod
     def new_comment(cls, id_post, texto, ip, *args, **kwargs):
-        user = MongoDB.get().users.find_one({'id': kwargs['n3_token']['id']})
+        user = MongoDB.get().users.find_one({'id': kwargs['auth_user']['id']})
         append_dict = {'user': user,
                        'texto': sub('<[^<]+?>', '', texto),
                        'ip': ip,
