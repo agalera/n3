@@ -16,7 +16,7 @@ class Admin:
     @post('/new_post')
     @auth(1)
     def new_post(*args, **kwargs):
-        new_id = M_admin.new_post(kwargs[settings.COOKIE_NAME]['id'],
+        new_id = M_admin.new_post(kwargs['auth_user']['id'],
                                   request.forms.get('title').decode('utf-8'),
                                   request.forms.get('texto').decode('utf-8'),
                                   request.forms.get('tags').split(','),
