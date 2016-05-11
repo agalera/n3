@@ -76,7 +76,7 @@ def auth(check):
                         '''
                         return HTTPError(401, "Unauthorized")
                 return func(*a, **ka)
-            return HTTPError(403, "Forbbiden")
+            return HTTPError(403, "Forbidden")
         return wrapper
     return decorator
 
